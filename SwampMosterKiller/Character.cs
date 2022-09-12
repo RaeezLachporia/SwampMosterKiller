@@ -42,7 +42,7 @@ namespace SwampMosterKiller
             Left,
             Right,
         }
-
+        public Tile[] heroVision = new Tile[4];
         public virtual void Attack()
         {
 
