@@ -12,5 +12,42 @@ namespace SwampMosterKiller
         {
             
         }
+
+        public override returnMove(Movement move = default(Movement))
+        {
+            bool canMove = false;
+
+            int move = 0;
+
+            MovementEnum Direction = MovementEnum.NoMovement;
+
+
+            while (canMove == false)
+            {
+                move = r.Next(0, 5);
+                canMove = true;
+
+
+
+                if ((heroVision[move].ToString() != "Boundary") & (heroVision[move].ToString() != "Hero"))
+                {
+                    canMove = true;
+                }
+            }
+            return (MovementEnum)move;
+        }
+    }
+
+    class Hero : Character
+    {
+        public Hero(int _X, int _Y, TileType _TOT ,int _Damage, int _Hp, int _MaxHp, char _Symbol) : base(_X, _Y, _TOT,2,10,10,'H')
+        {
+
+        }
+
+        public override ToString()
+        {
+            return "Hero" + "HP:" + Hp + "/" + MaxHp+"\n" + "damage" + Damage+ " [" + x.ToString() + y.ToString() + "]" ;
+        }
     }
 }
