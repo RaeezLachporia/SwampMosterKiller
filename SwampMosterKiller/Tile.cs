@@ -27,6 +27,7 @@ namespace SwampMosterKiller
             Enemy,
             Gold,
             Weapon,
+            Barrier 
         }
 
         public TileType TOT

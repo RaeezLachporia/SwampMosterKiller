@@ -24,7 +24,7 @@ namespace SwampMosterKiller
         int numEnemy;
         int borderConstraintX;
         int borderConstraintY;
-        random r = new random();
+        Random r = new Random();
 
 
         public Map (int _minWidth, int _maxWidth, int _minHeight, int _maxHeight, int _numEnemy)
@@ -56,24 +56,34 @@ namespace SwampMosterKiller
 
         private Tile Create(Tile.TileType type)
         {
-            int xPosition = r.Next(MinHeight, MaxHeight);
-            int yPosition = r.Next(MinWidth, MaxWidth);
+            int xPosition = r.Next(minHeight, maxHeight);
+            int yPosition = r.Next(minWidth, maxWidth);
+            Random pick = new Random();
 
      
             if (type == Tile.TileType.Enemy)
             {
-                return new SwampCreature(xPosition, yPosition, type, 'S', 1, 10);
+                int numForEnemy = pick.Next(1, 2);
+                if (numForEnemy ==1)
+                {
+                    return new SwampCreature(xPosition, yPosition, type, 10, 1, 10, 'S');
+                }
+                else if (numForEnemy == 2)
+                {
+                    return new Mage(xPosition, yPosition, Tile.TileType.Enemy, 5, 5, 5, 'M');
+                }
+               
             }
             else if (type == Tile.TileType.Hero)
             {
-                return new Hero(xPosition, yPosition, type, 'H', 10, 10);
+                return new Hero(xPosition, yPosition, type, 10, 10, 10,'H');
             }
 
             if (xPosition > mapHeight && yPosition > mapWidth)
             {
-                return Create(type);
+                return Create(Tile.TileType.Barrier);
             }
-            return new Hero(xPosition, yPosition, Tile.TileType.Hero, 'H', 10, 10);
+            return new Hero(xPosition, yPosition, Tile.TileType.Hero, 10, 10, 10,'H');
         }
     }
 }

@@ -10,7 +10,7 @@ namespace SwampMosterKiller
     {
         protected Random randomNumberGen = new Random();
 
-        protected Enemy(int _X, int _Y, TileType _TOT, int _enemyDmg, int _enemyHp, int _enemyMaxHp, char _Symbol) : base(_X, _Y, _TOT)
+        public Enemy(int _X, int _Y, TileType _TOT, int _enemyDmg, int _enemyHp, int _enemyMaxHp, char _Symbol) : base(_X, _Y, _TOT)
         {
             Damage = _enemyDmg;
             Hp = _enemyHp;
@@ -27,8 +27,10 @@ namespace SwampMosterKiller
 
         public override String ToString()
         {
-            return "EnemyClassName" + " at [" + x.ToString() + y.ToString() + "]" + Damage;
+            return "EnemyClassName" + " at [" + X.ToString() + Y.ToString() + "]" + Damage;
         }
 
     }
+
+   
 }
