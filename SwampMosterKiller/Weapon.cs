@@ -4,71 +4,108 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Weapon
+namespace SwampMosterKiller
 {
-    public class Weapon : Item
+    abstract class Weapon : Item
     {
-        public Weapon(int _X, int _Y, TileType _TOT) : base(_X, _Y, _TOT))
+        public Weapon(weaponType _WT,int _X, int _Y, TileType _TOT,string _Sym) : base(_X, _Y, _TOT)
         {
-
+            int X = _X;
+            int y = _Y;
+            
         }
         private int dmg;
-        public int DMG
+        public int Dmg
         {
-            get { return dmg}
-            set { dmg value; }
+            get { return Dmg; }
+            set { Dmg = value; }
         }
 
         private int range;
-        public virtual int RANGE
+        public virtual int Range
         {
-            get { return range
-            set { range value; }
+            get { return Range; }
+            set { Range = value; }
         }
 
         private int durability;
-        public int DURABILITY
+        public int Durability
         {
-            get { return durability}
-            set { durability value; }
+            get { return Durability; }
+            set { Durability = value; }
         }
 
         private int cost;
-        public int COST
+        public int Cost
         {
-            get { return cost}
-            set { cost value; }
+            get { return Cost; }
+            set { Cost = value; }
         }
 
-        private string weapontype;
-        public string WEAPONTYPE
+        public enum weaponType
         {
-            get { return weapontype}
-            set { weapontype value; }
+            Ranged,
+            Melee
         }
-        
-
+        private  weaponType wpn;
+        public int WPN
+        {
+            get { return WPN; }
+            set { WPN = value; }
+        }
+        private Weapon
     }
 
-     public class MeleeWeapon              
+    public class MeleeWeapon
     {
-        
-        
-        public enum MWType
+        public MeleeWeapon(Types _wpnT, int _X, int _Y, string _Sym)
+        {
+            _wpnT = wpnT;
+            _X = X;
+            _Y = Y;
+            _Sym = Sym;
+
+            Sym = "Dagger";
+            Sym = "Longsword";
+
+            MeleeWeapon mlw = new MeleeWeapon(Types.Dagger, 0, 0, "D");
+            MeleeWeapon sword = new MeleeWeapon(Types.LongSword, 0, 0, "S");
+            
+        }
+        public Types wpnT
+        {
+            get { return wpnT; }
+            set { wpnT = value; }
+        }
+        private int x;
+        public int X
+        {
+            get { return X; }
+            set { X = value; }
+        }
+        private int y;
+        public int Y
+        {
+            get { return y; }
+            set { Y = value; }
+        }
+        private string sym;
+        public string Sym
+        {
+            get { return Sym; }
+            set { Sym = value; }
+        }
+        public enum Types
         {
             Dagger,
             LongSword
         }
 
-        public override Range()
+        /*public override Range()
         {
-            return 1;
-        }
 
+        }*/
 
-          
-
-         
-
+       
+    }
 }
-

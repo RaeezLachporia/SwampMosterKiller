@@ -85,5 +85,33 @@ namespace SwampMosterKiller
             }
             return new Hero(xPosition, yPosition, Tile.TileType.Hero, 10, 10, 10,'H');
         }
+
+        public void generateMap()
+        {
+            for (int y = 0; y < mapHeight; y++)
+            {
+                for (int x = 0; x < mapWidth; x++)
+                {
+                    if (x == 0 || x == (mapWidth- 4) || y == 0 || y == mapHeight - 1)//BORDER
+                    {
+                        //create the barrier blocks that the player cant move past
+                        Create(Tile.TileType.Barrier, x, y);
+
+                    }
+                    else
+                    {
+                        //creates empty tiles that the player can move around in
+                        Create(Tile.TileType.Empty, x, y);
+
+                    }
+                }
+            }
+            Create(Tile.TileType.Hero);
+            for (int e = 0; e < enemies[].Count; e++)
+            {
+                Create(Tile.TileType.Enemy);
+            }
+
+        }
     }
 }

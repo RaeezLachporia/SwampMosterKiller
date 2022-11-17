@@ -32,5 +32,26 @@ namespace SwampMosterKiller
 
     }
 
-   
+    public class LeaderClass 
+    {
+        private int leaderlocate;
+
+        public int LEADERLOCATE
+        {
+            get { return leaderlocate; }
+            set { leaderlocate = value; }
+        }
+
+        public LeaderClass(int _X, int _Y, string _Symbol, int _enemyHp, int _enemyDamage) 
+        {
+            LeaderClass Leader = new LeaderClass(0, 0,  "L", 20, 2);
+
+            
+        }
+
+        public override int ReturnMove()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
