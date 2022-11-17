@@ -25,5 +25,10 @@ namespace SwampMosterKiller
             throw new NotImplementedException();
         }
 
+        public override CheckRange()
+        {
+
+        }
+
     }
 }
