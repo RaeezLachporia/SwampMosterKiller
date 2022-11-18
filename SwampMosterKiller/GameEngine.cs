@@ -18,12 +18,12 @@ namespace SwampMosterKiller
 
         public bool MovePlayer(Character.Movement movement)
         {
-            if (maps.PLAYERCHARACTER.ReturnMove(move) == Convert.ToInt32(move))
+            if (maps.PLAYERCHARACTER.ReturnMove(movement) == Convert.ToInt32(movement))
             {
-                GAMEMAP.Create(Tile.TileType.Empty, GAMEMAP.PLAYERCHARACTER.X, GAMEMAP.PLAYERCHARACTER.Y);
+                maps.generateMap(Tile.TileType.Empty, maps.PLAYERCHARACTER.X, maps.PLAYERCHARACTER.Y);
 
-                GAMEMAP.PLAYERCHARACTER.move(move);
-                GAMEMAP.MAPCONTAINER[GAMEMAP.PLAYERCHARACTER.X, GAMEMAP.PLAYERCHARACTER.Y] = GAMEMAP.PLAYERCHARACTER;
+                maps.PLAYERCHARACTER.move(movement);
+                maps.MAP[maps.PLAYERCHARACTER.X, maps.PLAYERCHARACTER.Y] = maps.PLAYERCHARACTER;
                 return true;
             }
             return false;

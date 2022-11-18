@@ -8,11 +8,11 @@ namespace SwampMosterKiller
 {
     abstract class Weapon : Item
     {
-        public Weapon(weaponType _WT,int _X, int _Y, TileType _TOT,string _Sym) : base(_X, _Y, _TOT)
+        public Weapon(weaponType _WT, int _X, int _Y, TileType _TOT, string _Sym) : base(_X, _Y, _TOT)
         {
             int X = _X;
             int y = _Y;
-            
+
         }
         private int dmg;
         public int Dmg
@@ -47,14 +47,15 @@ namespace SwampMosterKiller
             Ranged,
             Melee
         }
-        private  weaponType wpn;
+        private weaponType wpn;
         public int WPN
         {
             get { return WPN; }
             set { WPN = value; }
         }
-        private Weapon
+        
     }
+
 
     public class MeleeWeapon
     {

@@ -13,8 +13,8 @@ namespace SwampMosterKiller
 
         Hero H = new Hero();
         SwampCreature SW = new SwampCreature();
-        public Tile[,] map;
-        public Enemy[] enemies;
+        
+        
         int mapWidth;
         int mapHeight;
         int minWidth;
@@ -25,6 +25,27 @@ namespace SwampMosterKiller
         int borderConstraintX;
         int borderConstraintY;
         Random r = new Random();
+
+        private Tile[,] map;
+        public Tile[,] MAP
+        {
+            get { return map; }
+            set { map = value; }
+        }
+
+        private Hero playercharacter;
+        public Hero PLAYERCHARACTER
+        {
+            get { return playercharacter; }
+            set { playercharacter = value; }
+        }
+        private List<Enemy> enemies;
+
+        public List<Enemy> Enemies
+        { get { return enemies; }
+            set { enemies = value; }
+        }
+
 
 
         public Map (int _minWidth, int _maxWidth, int _minHeight, int _maxHeight, int _numEnemy)
@@ -45,7 +66,7 @@ namespace SwampMosterKiller
 
 
 
-            enemies = new Enemy[numEnemy];
+            enemies = new List<Enemy>(_numEnemy);
 
         }
 
@@ -76,17 +97,17 @@ namespace SwampMosterKiller
             }
             else if (type == Tile.TileType.Hero)
             {
-                return new Hero(xPosition, yPosition, type, 10, 10, 10,'H');
+                return new Hero(xPosition, yPosition, Tile.TileType.Hero, "H", 10, 2);
             }
 
             if (xPosition > mapHeight && yPosition > mapWidth)
             {
                 return Create(Tile.TileType.Barrier);
             }
-            return new Hero(xPosition, yPosition, Tile.TileType.Hero, 10, 10, 10,'H');
+            return new Hero(xPosition, yPosition, Tile.TileType.Hero, "H", 10, 2);
         }
 
-        public void generateMap()
+        public void generateMap(Tile.TileType TOT, int X = 0, int Y = 0)
         {
             for (int y = 0; y < mapHeight; y++)
             {
@@ -95,22 +116,28 @@ namespace SwampMosterKiller
                     if (x == 0 || x == (mapWidth- 4) || y == 0 || y == mapHeight - 1)//BORDER
                     {
                         //create the barrier blocks that the player cant move past
-                        Create(Tile.TileType.Barrier, x, y);
+                        Create(Tile.TileType.Barrier);
 
                     }
                     else
                     {
                         //creates empty tiles that the player can move around in
-                        Create(Tile.TileType.Empty, x, y);
+                        Create(Tile.TileType.Empty);
 
                     }
                 }
             }
             Create(Tile.TileType.Hero);
-            for (int e = 0; e < enemies[].Count; e++)
+            for (int e = 0; e < enemies.Count; e++)
             {
                 Create(Tile.TileType.Enemy);
+                LeaderClass LE = new LeaderClass(0, 0, "L", 20, 2);
             }
+
+
+           
+
+            
 
         }
     }
